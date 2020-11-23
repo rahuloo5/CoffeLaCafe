@@ -1,0 +1,33 @@
+.home_container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.title{
+    padding-top: 10px;
+}
+
+.ourstory{
+    font-weight: bolder;
+    font-size: larger;
+    padding: 50px;
+    text-align: center;
+    font-style: oblique;
+}
+
+.about_button{
+    border-radius: 20px;
+    box-shadow: 10px 5px 10px  ;
+    font-weight: bold;
+    height: 45px;
+    width: 85px;
+    outline: none;
+    cursor: pointer;
+}
+
+.about_button:hover{
+ background-color:  #6F4E37;
+ outline: none;
+}

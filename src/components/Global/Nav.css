@@ -1,0 +1,12 @@
+.logo{
+    background-color: white;
+}
+.navbar-brand{
+    color: white;
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    
+}

@@ -1,22 +1,65 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+import Background from '../components/Global/Background'
+import Home from '../components/Home'
+import Menu from '../components/Menu'
+import Products from '../components/Products'
+import Contact from '../components/Contact'
+
+
+
+
+const IndexPage = ({data}) => (
   <Layout>
+   
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
+    <Background img={data.imgg.childImageSharp.fluid}
+    
+    classStyle="Coffe-Back"/>
+    <Home/>
+    <Menu items = {data.menu}/>
+    <Products/>
+    <Contact/>
+    
+</Layout>
 )
 
+
+export const query = graphql`{
+ imgg: file(relativePath: {eq:"coffeback.jpg"})
+  {
+    childImageSharp{
+      fluid{
+        ...GatsbyImageSharpFluid_withWebp
+      }
+    }
+  }
+  menu:allContentfulCoffeItems{
+    edges{
+      node{
+        id
+        title
+        price
+        category
+        description{
+          description
+        }
+        images{
+          description
+          fixed(width:50 , height:50){
+            ...GatsbyContentfulFixed_tracedSVG
+          }
+        }
+      }
+      
+    }
+  }
+  
+  
+  }`
 export default IndexPage
